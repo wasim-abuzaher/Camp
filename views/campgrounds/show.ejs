@@ -1,0 +1,43 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Camps Ontario</p>
+            <div class="list-group">
+                <li class="list-group-item active">Category 1</li>
+                <li class="list-group-item">Category 2</li>
+                <li class="list-group-item">Category 3</li>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="img-responsive" src="<%= campground.image %>">
+                <div class="caption-full">
+                    <h4 class="pull-right">C$15.00/night</h4>
+                    <h4><a><%=campground.name%></a></h4>
+                    <p><%= campground.description %></p>
+                </div>
+            </div>
+            <div class="well">
+                <div class="text-right">
+                    <a class="btn btn-success" href="/campgrounds/<%=campground._id%>/comments/new">Add New Comment</a>
+                </div>
+                <hr>
+                <div>
+                    <% campground.comments.forEach(function(comment){ %>
+                        <div class="row">
+                           <div class="col-md-12">
+                                <Strong><%= comment.author %></Strong>
+                                <span class="pull-right">8 days ago</span>
+                                <p>
+                                    <%= comment.text %>
+                                </p>
+                           </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>
